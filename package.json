@@ -13,11 +13,13 @@
     "medusa-storefront"
   ],
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "build": "nuxi build",
+    "dev": "nuxi dev --port 8080",
+    "dev:open": "nuxi dev --open --port 8080",
+    "generate": "nuxi generate",
+    "preview": "nuxi preview",
+    "start": "npx cross-env NODE_ENV=production PORT=8080 node .output/server/index.mjs",
+    "postinstall": "nuxi prepare"
   },
   "dependencies": {
     "@medusajs/js-sdk": "2.6.1",
