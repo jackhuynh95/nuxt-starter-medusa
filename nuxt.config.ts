@@ -8,7 +8,8 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@nuxt/eslint',
-    '@nuxthub/core',
+    // Ignored the deployment to NuxtHub
+    // '@nuxthub/core',
   ],
   devtools: { enabled: true },
 
@@ -48,21 +49,22 @@ export default defineNuxtConfig({
   },
   compatibilityDate: '2024-11-06',
 
-  hooks: {
-    async 'prerender:routes'(ctx) {
-      const { regions } = await fetch(`${process.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL}/store/regions`, {
-        credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-          'x-publishable-api-key': process.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '',
-        },
-      }).then(res => res.json())
-      const countries = regions?.map((region: StoreRegion) => region.countries).flat()
-      for (const country of countries) {
-        ctx.routes.add(`/${country.iso_2}`)
-      }
-    },
-  },
+  // [BUG]: Failed to parse URL from undefined/store/regions - [cause]: Invalid URL
+  // hooks: {
+  //   async 'prerender:routes'(ctx) {
+  //     const { regions } = await fetch(`${process.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL}/store/regions`, {
+  //       credentials: 'include',
+  //       headers: {
+  //         'Content-Type': 'application/json',
+  //         'x-publishable-api-key': process.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '',
+  //       },
+  //     }).then(res => res.json())
+  //     const countries = regions?.map((region: StoreRegion) => region.countries).flat()
+  //     for (const country of countries) {
+  //       ctx.routes.add(`/${country.iso_2}`)
+  //     }
+  //   },
+  // },
 
   eslint: {
     config: {
