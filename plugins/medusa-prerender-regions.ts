@@ -7,7 +7,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     credentials: 'include',
     headers: {
         'Content-Type': 'application/json',
-        'x-publishable-api-key': import.meta.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || '',
+        'x-publishable-api-key': config.public.medusaPublishableKey || '',
     },
     }).then(res => res.json())
     const countries = regions?.map((region: StoreRegion) => region.countries).flat()

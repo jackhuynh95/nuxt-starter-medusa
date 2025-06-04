@@ -26,6 +26,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       medusaServerURL: import.meta.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL,
+      medusaPublishableKey: import.meta.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
       stripeKey: import.meta.env.NUXT_PUBLIC_STRIPE_KEY || '',
     },
   },
