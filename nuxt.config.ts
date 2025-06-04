@@ -25,7 +25,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      stripeKey: process.env.NUXT_PUBLIC_STRIPE_KEY || '',
+      medusaServerURL: import.meta.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL,
+      stripeKey: import.meta.env.NUXT_PUBLIC_STRIPE_KEY || '',
     },
   },
 
@@ -73,8 +74,8 @@ export default defineNuxtConfig({
   },
 
   medusa: {
-    baseUrl: process.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL,
-    publishableKey: process.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
+    baseUrl: import.meta.env.NUXT_PUBLIC_MEDUSA_BACKEND_URL,
+    publishableKey: import.meta.env.NUXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY,
     server: true,
   },
 })
