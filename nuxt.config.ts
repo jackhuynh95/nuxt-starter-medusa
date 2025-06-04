@@ -8,8 +8,7 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxt/image',
     '@nuxt/eslint',
-    // Ignored the deployment to NuxtHub
-    // '@nuxthub/core',
+    '@nuxthub/core',
   ],
   devtools: { enabled: true },
 
